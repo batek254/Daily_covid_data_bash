@@ -38,9 +38,11 @@ country=$1
 new_cases=$(cat tmp_file | grep -m1 -A2 $1 | cut -d'>' -f2 | cut -d'<' -f1 | cut -d'+' -f2 | sed -n '3p')
 #cases=$(cat tmp_file | grep "style=\"color:#aaa\"" | cut -d">" -f2 | cut -d"<" -f1)
 #web scraping new deaths
-new_deaths=$(cat tmp_file | grep -m1 -A5 Poland | cut -d'>' -f2 | cut -d'<' -f1 | cut -d'+' -f2 | sed -n '6p')
+new_deaths=$(cat tmp_file | grep -m1 -A5 $1 | cut -d'>' -f2 | cut -d'<' -f1 | cut -d'+' -f2 | sed -n '6p')
+#web scraping total test
+total_test=$(cat tmp_file | grep -m1 -A12 Poland | cut -d'>' -f2 | cut -d'<' -f1 | sed -n '13p')
 #saving results to csv
-echo "$date;$hour;$new_cases;$new_deaths;$country" >> total_covid_cases.csv
+echo "$date;$hour;$new_cases;$new_deaths;$total_deaths;$country" >> total_covid_cases.csv
 #removing tmp_file
 rm tmp_file
 
