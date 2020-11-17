@@ -42,7 +42,7 @@ new_deaths=$(cat tmp_file | grep -m1 -A5 $1 | cut -d'>' -f2 | cut -d'<' -f1 | cu
 #web scraping total test
 total_test=$(cat tmp_file | grep -m1 -A12 $1 | cut -d'>' -f2 | cut -d'<' -f1 | sed -n '13p')
 #saving results to csv
-echo "$date;$hour;$new_cases;$new_deaths;$total_deaths;$country" >> total_covid_cases.csv
+echo "$date;$hour;$new_cases;$new_deaths;$total_test;$country" >> total_covid_cases.csv
 #removing tmp_file
 rm tmp_file
 
